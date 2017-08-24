@@ -20,9 +20,6 @@ RUN cd /opt/ && \
 
 RUN npm config set registry https://registry.npm.taobao.org/
 
-RUN apt-get update && \
-    apt-get install -y mysql-server redis-server
-
 RUN mkdir -p /opt/apps/frappe
 WORKDIR /opt/apps/frappe
 
