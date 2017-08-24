@@ -14,7 +14,7 @@ ENV LANGUAGE en_US.UTF-8
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs
 
-RUN curl 'https://github.com/frappe/bench/archive/4.1.tar.gz' -oL /opt/bench-4.1.tar.gz && \
+RUN curl https://github.com/frappe/bench/archive/4.1.tar.gz -Lo /opt/bench-4.1.tar.gz && \
     cd /opt/ && \
     tar -zxf bench-4.1.tar.gz && \
     pip install -e /opt/bench-4.1
