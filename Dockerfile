@@ -15,11 +15,21 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs
 
 RUN cd /opt/ && \
-    git clone https://github.com/frappe/bench.git && \
+    git clone https://github.com/gshmu/bench.git && \
     pip install -e /opt/bench
 
 RUN npm config set registry https://registry.npm.taobao.org/
 
-RUN mkdir -p /opt/apps/frappe
-WORKDIR /opt/apps/frappe
+RUN { \
+        echo "mariadb-server-10.0" mysql-server/root_password password 'toor'; \
+        echo "mariadb-server-10.0" mysql-server/root_password_again password 'toor'; \
+    } | debconf-set-selections \
+    && apt-get update \
+    && apt-get install -y mariadb-server redis-server mysqlclient-dev
+
+RUN mkdir -p /opt/apps/frappe && \
+    useradd -ms /bin/bash wguser && \
+    chown wguser:wguser /opt/apps/
+
+WORKDIR /opt/apps
 
