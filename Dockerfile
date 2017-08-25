@@ -25,7 +25,7 @@ RUN { \
         echo "mariadb-server-10.0" mysql-server/root_password_again password "toor"; \
     } | debconf-set-selections \
     && apt-get update \
-    && apt-get install -y mariadb-server redis-server mysqlclient-dev
+    && apt-get install -y mariadb-server redis-server libmysqlclient-dev cron
 
 RUN mkdir -p /opt/apps/frappe && \
     useradd -ms /bin/bash wguser && \
