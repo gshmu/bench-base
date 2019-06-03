@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch
 
 COPY cn.list /etc/apt/sources.list
 RUN apt-get update && \
