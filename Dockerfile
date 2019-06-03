@@ -5,7 +5,8 @@ RUN apt-get update && \
     apt-get install -y curl telnet vim locales-all \
         python python-dev python-pip git
 
-RUN pip install -U pip virtualenv
+RUN pip install pip==9.0.3 
+RUN pip install -U virtualenv
 
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
